@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    private Rigidbody2D triangulo;
+    private Rigidbody2D player;
     public bool isGrounded;
 
     void Start()
     {
-        triangulo = GetComponent<Rigidbody2D>();
+        player = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -28,7 +29,15 @@ public class Controller : MonoBehaviour
     {
         if(Input.GetButtonUp("Jump") && !isGrounded)
         {
-            triangulo.AddForce(new Vector2(0f, jumpForce * Input.GetAxis("Jump")), ForceMode2D.Impulse);
+            player.AddForce(new Vector2(0f, jumpForce * Input.GetAxis("Jump")), ForceMode2D.Impulse);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }
