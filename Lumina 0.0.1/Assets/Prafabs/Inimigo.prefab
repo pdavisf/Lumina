@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 8785263987353822750}
   - component: {fileID: 5683490526338880482}
   - component: {fileID: 6326477060292744431}
-  - component: {fileID: 3639955092519815022}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Enemy
@@ -277,18 +276,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.17391229}
   m_EdgeRadius: 0
---- !u!114 &3639955092519815022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2929545336156384047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5d8effe61390e4b8f05337c3d8ef06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6931959026439977506
 GameObject:
   m_ObjectHideFlags: 0

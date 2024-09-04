@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -39,5 +40,15 @@ public class Controller : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if(other.CompareTag("Save"))
+        {
+            Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Finish"))
+        {
+            PlayerPrefs.DeleteKey("HasSave");
+            SceneManager.LoadScene("lumina 0.0.3");
+        }
+
     }
 }
