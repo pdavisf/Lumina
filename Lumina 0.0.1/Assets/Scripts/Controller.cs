@@ -47,7 +47,7 @@ public class Controller : MonoBehaviour
         if(other.CompareTag("Finish"))
         {
             PlayerPrefs.DeleteKey("HasSave");
-            SceneManager.LoadScene("lumina 0.0.3");
+            SceneManager.LoadScene("Lumina 0.4");
         }
 
     }
