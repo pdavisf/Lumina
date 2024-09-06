@@ -28,9 +28,9 @@ public class Controller : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && !isGrounded)
+        if(Input.GetButtonUp("Jump") && !isGrounded)
         {
-            player.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            player.AddForce(new Vector2(0f, jumpForce * Input.GetAxis("Jump")), ForceMode2D.Impulse);
         }
     }
 
@@ -47,7 +47,7 @@ public class Controller : MonoBehaviour
         if(other.CompareTag("Finish"))
         {
             PlayerPrefs.DeleteKey("HasSave");
-            SceneManager.LoadScene("Lumina 0.4");
+            SceneManager.LoadScene("SampleScene");
         }
 
     }
