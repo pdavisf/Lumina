@@ -28,9 +28,9 @@ public class Controller : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButtonUp("Jump") && !isGrounded)
+        if(Input.GetButtonDown("Jump") && !isGrounded)
         {
-            player.AddForce(new Vector2(0f, jumpForce * Input.GetAxis("Jump")), ForceMode2D.Impulse);
+            player.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
 
