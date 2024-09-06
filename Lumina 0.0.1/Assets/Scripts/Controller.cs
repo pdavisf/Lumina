@@ -51,4 +51,12 @@ public class Controller : MonoBehaviour
         }
 
     }
+
+    void Die()
+    {
+        if(Input.GetButtonUp("Fire1") && !isGrounded)
+        {
+           SceneManager.LoadScene("SampleScene");
+        }
+    }
 }
