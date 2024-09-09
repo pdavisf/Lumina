@@ -5,11 +5,11 @@ using UnityEngine;
 public class check : MonoBehaviour
 {
 
-    Controller Player;
+    PlayerController Player;
 
     void Start()
     {
-        Player = GetComponent<Controller>();
+        Player = GetComponent<PlayerController>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)

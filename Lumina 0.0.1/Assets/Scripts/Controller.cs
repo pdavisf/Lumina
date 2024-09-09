@@ -1,16 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEditor.Build.Reporting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
+    private Rigidbody2D player;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    private Rigidbody2D player;
     public bool isGrounded;
-
+    
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
@@ -20,7 +24,7 @@ public class Controller : MonoBehaviour
         HorizontalMove();
         Jump();
         Input.GetAxis("Jump");
-    }
+       }
     void HorizontalMove()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
@@ -48,15 +52,6 @@ public class Controller : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("HasSave");
             SceneManager.LoadScene("SampleScene");
-        }
-
-    }
-
-    void Die()
-    {
-        if(Input.GetButtonUp("Fire1") && !isGrounded)
-        {
-           SceneManager.LoadScene("SampleScene");
         }
     }
 }

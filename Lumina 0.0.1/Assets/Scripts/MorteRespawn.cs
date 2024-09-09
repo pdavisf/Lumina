@@ -10,7 +10,7 @@ public class MorteRespawn : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Lumina 0.4");
+            SceneManager.LoadScene("prototipo 1");
             print("Começa denovo kkk!");
         }
     }

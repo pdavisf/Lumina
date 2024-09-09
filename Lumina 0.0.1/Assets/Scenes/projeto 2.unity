@@ -3518,9 +3518,10 @@ MonoBehaviour:
   jumpPressed: 0
   direction: 1
   canMove: 1
+  isGrounded: 0
   onWall: 0
-  wallOffset: {x: 0, y: 0, z: 0}
-  wallRadius: 0
+  wallOffset: {x: 0.3, y: 0, z: 0}
+  wallRadius: 0.15
   maxFallSpeed: -1
   wallJumpDuration: 0.25
   jumpFromWall: 0
@@ -3538,7 +3539,7 @@ Animator:
   m_GameObject: {fileID: 1854603675}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d624c46daa3b56c4f871547cf567d784, type: 2}
+  m_Controller: {fileID: 9100000, guid: 437a0c1e01cd7eb4ab9a17ae4c46c4bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
