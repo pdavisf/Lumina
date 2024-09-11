@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         Input.GetAxis("Jump");
     }
 
+    
     void Jump()
     {
         if(Input.GetButtonUp("Jump") && !isGrounded)

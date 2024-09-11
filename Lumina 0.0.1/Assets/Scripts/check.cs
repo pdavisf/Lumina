@@ -5,18 +5,18 @@ using UnityEngine;
 public class check : MonoBehaviour
 {
 
-    PlayerController Player;
+    Controller player2;
 
     void Start()
     {
-        Player = GetComponent<PlayerController>();
+        player2 = GetComponent<Controller>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.layer == 8)
         {
-            Player.isGrounded = false;
+            player2.isGrounded = false;
         }
     }
 
@@ -25,7 +25,7 @@ public class check : MonoBehaviour
     {
         if(collision.gameObject.layer == 8)
         {
-            Player.isGrounded = true;
+            player2.isGrounded = true;
         }
     }
 }
