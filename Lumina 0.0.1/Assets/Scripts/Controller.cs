@@ -12,15 +12,13 @@ using UnityEngine.UI;
 public class Controller : MonoBehaviour
 {
     private Rigidbody2D player;
+    private SpriteRenderer sprite;
+    private bool pulando;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    public bool isGrounded;
-    public Transform Chão;
-    public float footOffest = 0.4f;
-    public float groundDistance = 0.1f;
-    public LayerMask groundLayer;
-    public Vector3 wallOffset;
-    public float wallRadius;
+    [SerializeField] private Transform chão;
+    [SerializeField] private float detector;
+    [SerializeField] public LayerMask groundLayer;
 
     void Start()
     {
@@ -30,8 +28,11 @@ public class Controller : MonoBehaviour
     {
         HorizontalMove();
         Jump();
-        Input.GetAxis("Jump");
-        PhysicsCheck();
+
+        if(this.pulando)
+        {
+            if(Input.GetKey(KeyCode.Space));
+        }
     }
     void HorizontalMove()
     {
@@ -40,42 +41,20 @@ public class Controller : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButtonUp("Jump") && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            player.AddForce(new Vector2(0f, jumpForce * Input.GetAxis("Jump")), ForceMode2D.Impulse);
+            Collider2D collider = Physics2D.OverlapCircle(this.chão.position, this.detector, this.groundLayer);
+            if(collider != null)
+            {
+                Vector2 força = new Vector2(0, this.jumpForce);
+                this.player.AddForce(força, ForceMode2D.Impulse);
+            }
         }
     }
 
-    void PhysicsCheck()
+    void OnDrawGizmos()
     {
-        RaycastHit2D leftFoot = Raycast(Chão.position + new Vector3(-footOffest, 0), Vector2.down, groundDistance, groundLayer);
-        RaycastHit2D rightFoot = Raycast(Chão.position + new Vector3(footOffest, 0), Vector2.down, groundDistance, groundLayer);
-        
-        if(leftFoot || rightFoot)
-        {
-            isGrounded = true;
-        }
-    }
-
-    public RaycastHit2D Raycast(Vector2 origin, Vector2 rayDirection, float length, LayerMask mask, bool drawRay = true)
-    {
-
-        RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, length, mask);
-
-        if (drawRay)
-        {
-            Color color = hit ? Color.red : Color.green;
-            Debug.DrawRay(origin, rayDirection * length, color);
-        }
-        return hit;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawWireSphere(transform.position + new Vector3(wallOffset.x, 0), wallRadius);
-        Gizmos.DrawWireSphere(transform.position + new Vector3(-wallOffset.x, 0), wallRadius);
+        Gizmos.DrawWireSphere(this.chão.position, this.detector);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -91,7 +70,19 @@ public class Controller : MonoBehaviour
         if(other.CompareTag("Finish"))
         {
             PlayerPrefs.DeleteKey("HasSave");
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Fase2");
+        }
+        if(other.CompareTag("Fase3"))
+        {
+            SceneManager.LoadScene("Fase3");
+        }
+        if(other.CompareTag("Fase4"))
+        {
+            SceneManager.LoadScene("Fase4");
+        }
+        if(other.CompareTag("Fase5"))
+        {
+            SceneManager.LoadScene("Fase5");
         }
     }
 }

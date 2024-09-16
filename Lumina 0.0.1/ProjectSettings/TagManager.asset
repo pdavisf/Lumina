@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Save
   - Coin
+  - Fase3
+  - Fase4
+  - Fase5
   layers:
   - Default
   - TransparentFX
