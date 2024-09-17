@@ -27,6 +27,18 @@ public class Controller : MonoBehaviour
     void Update()
     {
         HorizontalMove();
+
+        Vector3 individuo = transform.localScale;
+        if(Input.GetAxis("Horizontal") < 0)
+        {
+            individuo.x = -3;
+        }
+        if(Input.GetAxis("Horizontal") > 0)
+        {
+            individuo.x = 3;
+        }
+        transform.localScale = individuo;
+
         Jump();
 
         if(this.pulando)
