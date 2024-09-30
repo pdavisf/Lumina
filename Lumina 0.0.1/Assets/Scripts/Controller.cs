@@ -43,7 +43,10 @@ public class Controller : MonoBehaviour
 
         if(this.pulando)
         {
-            if(Input.GetKey(KeyCode.Space));
+            if(Input.GetKey(KeyCode.Space))
+            {
+                
+            }
         }
     }
     void HorizontalMove()
